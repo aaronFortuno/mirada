@@ -1,5 +1,11 @@
 # Historial de canvis
 
+## v0.3.0 · 23 de novembre de 2026
+
+- Panell d’àudio amb fragment original, prova de la sessió, lectura prèvia, nombre d’escoltes, pausa, velocitat i locucions opcionals. El QR conserva la configuració.
+- Panell d’impressió amb tipografia, marges, interlineat, espais i selecció de preguntes i línies de resposta. La fitxa i el solucionari comparteixen la selecció.
+- El pilot passa a `ca-M000`. Els enllaços i QR anteriors continuen funcionant. Les variants comparteixen el codi `M000`.
+
 ## v0.2.1 · 23 de novembre de 2026
 
 - Àudio de prova d’«Arribem a la biblioteca» disponible des del QR de la fitxa.

@@ -12,7 +12,11 @@ Serveix l’arrel amb qualsevol servidor HTTP estàtic. Per exemple, amb Python,
 
 El catàleg i el pilot són a `content/catalogue.json`. La vista docent i l’encaminament són a `app.js`. Els mòduls `catalogue.js`, `worksheet.js`, `listening.js` i `locales.js` mantenen separats el catàleg, els imprimibles, l’escolta i la llengua de la interfície.
 
-Cada entrada té un identificador i una versió. Conserva la versió dels materials impresos quan s’hi afegeixi l’àudio corresponent, amb el camp `audio` i un camí al fitxer. L’enllaç d’escolta combina l’identificador i la versió.
+Cada entrada té un identificador de llengua i codi, com `ca-M000`, i una versió dels materials. Les variants lingüístiques comparteixen el camp `code` i cadascuna conserva el seu contingut, documents i àudio. El camp `aliases` permet mantenir adreces anteriors.
+
+El panell d’àudio desa els ajustos al navegador i els incorpora a l’enllaç del QR. El camp opcional `audioPrompts` apunta a les locucions inicial i de repetició en la llengua de l’activitat. Les dues locucions del pilot provenen de [Sentit](https://github.com/aaronFortuno/sentit).
+
+El panell d’impressió desa els ajustos per activitat al navegador. Les preguntes visibles són les mateixes a la fitxa i al solucionari i conserven la numeració original.
 
 ## Publicació
 

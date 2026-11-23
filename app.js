@@ -1,12 +1,13 @@
-import { loadCatalogue, renderCatalogue } from './catalogue.js?v=0.2.1';
-import { makeListeningHash, renderListening } from './listening.js';
-import { messages, mottos } from './locales.js?v=0.2.1';
+import { loadCatalogue, renderCatalogue } from './catalogue.js?v=0.3.0';
+import { audioFromLink, renderListening } from './listening.js?v=0.3.0';
+import { messages, mottos } from './locales.js?v=0.3.0';
 import { chooseMotto, setupSiteControls } from './site.js';
 import { element, getPreference, setPreference } from './ui.js';
-import { renderAnswers, renderSources, renderWorksheet } from './worksheet.js';
+import { renderWorkspace, setupWorkspacePanels } from './workspace.js';
 
 const get = id => document.getElementById(id);
 const main = get('main');
+const closeWorkspacePanels = setupWorkspacePanels();
 const filters = get('filters');
 const search = get('search');
 const searchLabel = get('catalogue-search');
@@ -17,6 +18,8 @@ const viewButtons = [...document.querySelectorAll('[data-view]')];
 
 let activities = [];
 let sheet = 'worksheet';
+let currentWorkspace;
+let disposeListening;
 let loaded = false;
 let failed = false;
 let language = getPreference('language', 'ca') === 'es' ? 'es' : 'ca';
@@ -59,46 +62,6 @@ function updateCatalogue() {
     t, get('activities'), get('result-count'));
 }
 
-function updateWorkspace(activity) {
-  const listen = new URL(makeListeningHash(activity), location.href);
-  get('activity-info').replaceChildren(
-    element('div', { class: 'activity-details' },
-      element('span', { class: 'pill' }, t.pilot),
-      element('h1', { lang: activity.language }, activity.title),
-      element('p', { class: 'meta' }, t.levelLabels[activity.level]),
-      element('p', { lang: activity.language }, activity.summary),
-      element('p', { class: 'meta' }, activity.audio ? t.audio : t.pending)
-    )
-  );
-  const access = element('input', { class: 'copy-link', readonly: '', hidden: '', 'aria-label': t.listen, value: listen.href });
-  const copyStatus = element('p', { class: 'meta', role: 'status' });
-  const copy = element('button', { class: 'button secondary', type: 'button' }, t.copy);
-  copy.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(listen.href);
-      copyStatus.textContent = t.copied;
-    } catch {
-      access.hidden = false;
-      access.focus();
-      access.select();
-    }
-  });
-  const print = element('button', { class: 'button', type: 'button' }, t.print);
-  print.addEventListener('click', () => window.print());
-
-  get('workspace-actions').replaceChildren(
-    element('a', { class: 'subtle', href: listen.hash }, t.listen), copy, access, copyStatus, print
-  );
-  for (const button of viewButtons) button.setAttribute('aria-pressed', String(button.dataset.view === sheet));
-  const panels = {
-    worksheet: () => renderWorksheet(activity, t, listen.href),
-    sources: () => renderSources(activity, t),
-    answers: () => renderAnswers(activity, t)
-  };
-  get('preview').replaceChildren(panels[sheet]());
-  get('preview').scrollTop = 0;
-}
-
 function route() {
   if (failed || !loaded) {
     get('loading').textContent = failed ? t.loadError : t.loading;
@@ -107,18 +70,27 @@ function route() {
   const params = new URLSearchParams(location.hash.slice(1));
   const listening = params.has('escolta');
   const id = params.get('escolta') ?? params.get('activitat');
-  const activity = activities.find(entry => entry.id === id);
+  const activity = activities.find(entry => entry.id === id || entry.aliases?.includes(id));
   const revisionMatches = !params.has('v') || params.get('v') === String(activity?.version);
   const view = !id ? 'catalogue' : activity && revisionMatches ? (listening ? 'listening' : 'workspace') : null;
   for (const name of views) get(name).hidden = name !== view;
   get('loading').hidden = Boolean(view);
   get('loading').textContent = view ? t.loading : t.notFound;
   document.body.classList.toggle('listening-mode', view === 'listening');
-  if (view !== 'listening') get('listening').replaceChildren();
+  currentWorkspace?.dispose();
+  currentWorkspace = undefined;
+  disposeListening?.();
+  disposeListening = undefined;
+  get('listening').replaceChildren();
   searchLabel.hidden = view !== 'catalogue';
   if (view === 'catalogue') updateCatalogue();
-  if (view === 'workspace') updateWorkspace(activity);
-  if (view === 'listening') renderListening(activity, t, get('listening'));
+  if (view === 'workspace') {
+    const versions = activities.filter(entry => entry.code === activity.code);
+    currentWorkspace = renderWorkspace(activity, versions, t, messages[activity.language] ?? t, sheet);
+  }
+  if (view === 'listening') {
+    disposeListening = renderListening(activity, messages[activity.language] ?? t, get('listening'), audioFromLink(activity, params.get('s')));
+  }
 }
 
 translate();
@@ -134,10 +106,11 @@ filters.addEventListener('reset', () => queueMicrotask(updateCatalogue));
 search.addEventListener('input', updateCatalogue);
 for (const button of viewButtons) button.addEventListener('click', () => {
   sheet = button.dataset.view;
-  route();
+  currentWorkspace?.showSheet(sheet);
 });
 window.addEventListener('hashchange', () => {
   sheet = 'worksheet';
+  closeWorkspacePanels();
   route();
   main.focus({ preventScroll: true });
 });

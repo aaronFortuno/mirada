@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Comprensions multimodals d’ortogra.fi amb àudio i materials imprimibles.">
   <meta name="theme-color" content="#f7f5ee">
-  <link rel="stylesheet" href="./styles.css?v=0.2.0">
+  <link rel="stylesheet" href="./styles.css?v=0.3.0">
+  <style id="worksheet-page-style"></style>
   <script defer src="./assets/qrcode.js"></script>
-  <script type="module" src="./app.js?v=0.2.1"></script>
+  <script type="module" src="./app.js?v=0.3.0"></script>
   <title>Mirada · Comprensions multimodals</title>
 </head>
 <body>
@@ -59,10 +60,17 @@
       </div>
     </section>
     <section id="workspace" class="workspace" hidden>
-      <aside class="pane workspace-tools">
+      <header class="workspace-header">
         <a href="./" class="subtle" data-t="back">Torna al catàleg</a>
-        <div id="activity-info"></div>
-        <div id="workspace-actions"></div>
+        <div id="activity-info" class="activity-details"></div>
+      </header>
+      <div class="workspace-launchers" role="group" data-label="workspaceSettings" aria-label="Ajustos de l’activitat">
+        <button type="button" data-open-panel="audio" aria-expanded="false" aria-controls="audio-panel" data-t="audioPanel">Àudio</button>
+        <button type="button" data-open-panel="print" aria-expanded="false" aria-controls="print-panel" data-t="printPanel">Impressió</button>
+      </div>
+      <aside class="pane workspace-panel audio-panel" id="audio-panel" aria-labelledby="audio-panel-title">
+        <h2 id="audio-panel-title" tabindex="-1" data-t="audioPanel">Àudio</h2>
+        <div id="audio-settings"></div>
       </aside>
       <section class="pane preview">
         <div class="preview-bar" role="group" aria-label="Materials" data-label="materials">
@@ -72,6 +80,10 @@
         </div>
         <div id="preview" class="paper-stage"></div>
       </section>
+      <aside class="pane workspace-panel print-panel" id="print-panel" aria-labelledby="print-panel-title">
+        <h2 id="print-panel-title" tabindex="-1" data-t="printPanel">Impressió</h2>
+        <div id="print-settings"></div>
+      </aside>
     </section>
     <section id="listening" class="listening" hidden></section>
   </main>
@@ -82,7 +94,7 @@
       <a class="parent-brand" href="https://ortogra.fi/"><span data-t="parent">Un projecte d’</span><img src="./assets/ortografi.svg" width="90" height="19" alt="ortogra.fi"></a>
       <nav class="footer-links" data-label="projectLinks" aria-label="Informació del projecte">
         <a href="https://github.com/aaronFortuno/mirada/blob/main/LICENSE" data-label="license" aria-label="Llicència MIT">MIT</a>
-        <button type="button" data-open="changes" aria-haspopup="dialog" aria-controls="changes"><span class="sr-only" data-t="changes">Historial de canvis</span> v0.2.1</button>
+        <button type="button" data-open="changes" aria-haspopup="dialog" aria-controls="changes"><span class="sr-only" data-t="changes">Historial de canvis</span> v0.3.0</button>
         <button type="button" data-open="v4v" aria-haspopup="dialog" aria-controls="v4v">V4V</button>
       </nav>
     </div>
@@ -97,6 +109,14 @@
         <form method="dialog"><button class="icon-button" type="submit" data-label="close" aria-label="Tanca" autofocus><svg aria-hidden="true"><use href="./assets/icons.svg#close"></use></svg></button></form>
       </header>
       <div class="changelog-scroll">
+        <article>
+          <h3>v0.3.0 <time datetime="2026-11-23">23/11/2026</time></h3>
+          <ul>
+            <li data-t="releaseWorkspace">Panells d’àudio i impressió a la vista docent. El QR recull els ajustos d’escolta.</li>
+            <li data-t="releaseLayout">Tipografia, marges, espaiats i preguntes configurables a la fitxa i al solucionari.</li>
+            <li data-t="releaseCodes">Identificadors amb llengua i codi. El pilot passa a ca-M000 i els enllaços impresos continuen funcionant.</li>
+          </ul>
+        </article>
         <article>
           <h3>v0.2.1 <time datetime="2026-11-23">23/11/2026</time></h3>
           <ul>

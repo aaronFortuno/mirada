@@ -1,6 +1,8 @@
 [
   {
-    "id": "arribem-a-la-biblioteca",
+    "id": "ca-M000",
+    "code": "M000",
+    "aliases": ["arribem-a-la-biblioteca"],
     "version": 1,
     "language": "ca",
     "level": "upperPrimary",
@@ -9,6 +11,10 @@
     "context": "És dimarts 14 de juliol de 2026, un dia feiner. La Júlia i en Nil han anat a passar el matí a Igualada. T’envien un missatge de veu perquè els ajudis a acabar el trajecte. Tens a mà un plànol del centre i l’horari d’una de les línies de bus. Escolta el missatge i consulta els dos documents per poder-los donar indicacions que puguin seguir.",
     "transcript": "Ei, soc la Júlia! En Nil i jo ja som a l’Estació d’Autobusos. Ara són les deu i vint. L’altre cop vam agafar la circular interior i vam baixar a Rambla General Vives. Podem fer el mateix avui? Hem quedat amb la meva cosina a la parada de Cal Font. Ens espera allà i després anirem junts a la biblioteca. Mira a quina hora passa el primer bus d’aquesta línia que podem agafar i digue’ns per on anar quan baixem.",
     "audio": "./assets/audio/arribem-a-la-biblioteca.mp3",
+    "audioPrompts": {
+      "initial": "./assets/audio/ca-lectura-temps-variable-v2.mp3",
+      "repeat": "./assets/audio/ca-repassa-les-respostes-v2.mp3"
+    },
     "sources": [
       {
         "type": "map",
@@ -73,6 +79,7 @@
       },
       {
         "numero": 7,
+        "lines": 4,
         "tipus": "missatge escrit i itinerari",
         "enunciat": "Escriu-los un missatge breu amb la línia, l’hora i la parada on poden agafar el bus, i tria on han de baixar. Ressegueix amb el dit un camí pels carrers fins a la parada on han quedat i dona’ls una indicació que puguin seguir.",
         "resposta": "Exemple: «Agafeu la LC1 a l’Estació d’Autobusos cap a les 10.32 h i baixeu a Plaça de la Creu cap a les 10.39 h. A peu, pugeu fins a les rambles, travesseu-les i continueu pel carrer per on passa la línia verda fins a la parada de Cal Font.» També és vàlid baixar a Plaça del Rei cap a les 10.38 h i proposar un camí coherent fins a Cal Font.",

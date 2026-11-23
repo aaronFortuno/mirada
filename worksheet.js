@@ -1,3 +1,4 @@
+import { fonts } from './settings.js';
 import { element } from './ui.js';
 
 function paperHeading(title, type) {
@@ -10,7 +11,28 @@ function paperHeading(title, type) {
   );
 }
 
-export function renderWorksheet(activity, t, url) {
+function printable(activity, layout, ...contents) {
+  const paper = element('article', { class: 'paper formatted-paper', lang: activity.language }, ...contents);
+  const properties = {
+    '--paper-font': fonts[layout.font],
+    '--paper-size': layout.size + 'pt',
+    '--paper-leading': layout.leading,
+    '--paper-question-gap': layout.questionGap + 'mm',
+    '--paper-line-gap': layout.lineGap + 'mm',
+    '--paper-margin-top': layout.marginTop,
+    '--paper-margin-right': layout.marginRight,
+    '--paper-margin-bottom': layout.marginBottom,
+    '--paper-margin-left': layout.marginLeft
+  };
+  for (const [key, value] of Object.entries(properties)) paper.style.setProperty(key, value);
+  return paper;
+}
+
+function selectedQuestions(activity, layout) {
+  return activity.questions.filter(question => layout.questions[question.numero].visible);
+}
+
+export function renderWorksheet(activity, t, url, layout) {
   const qr = element('div', { class: 'paper-qr', 'aria-hidden': 'true' });
   if (typeof globalThis.qrcode === 'function') {
     const code = globalThis.qrcode(0, 'M');
@@ -21,19 +43,20 @@ export function renderWorksheet(activity, t, url) {
   const identity = element('div', { class: 'paper-identity' },
     element('span', {}, t.name, element('i')), element('span', {}, t.date, element('i'))
   );
-  const questions = element('ol', { class: 'questions' }, ...activity.questions.map(question => {
-    const item = element('li', {}, element('p', {}, question.enunciat));
+  const questions = element('ol', { class: 'questions' }, ...selectedQuestions(activity, layout).map(question => {
+    const item = element('li', { value: question.numero }, element('p', {}, question.enunciat));
     if (question.opcions) {
       item.append(element('ul', { class: 'options' },
         ...question.opcions.map(value => element('li', {}, '□ ', value))));
-    } else {
-      const lines = question.numero === 7 ? 4 : 2;
+    }
+    const { lines } = layout.questions[question.numero];
+    if (lines) {
       item.append(element('div', { class: 'response-lines', 'aria-hidden': 'true' },
         ...Array.from({ length: lines }, () => element('span'))));
     }
     return item;
   }));
-  return element('article', { class: 'paper', lang: activity.language },
+  return printable(activity, layout,
     paperHeading(activity.title, t.worksheet), identity,
     element('div', { class: 'paper-intro' }, element('p', {}, activity.context),
       element('div', { class: 'paper-listening' }, qr, element('a', { href: url }, t.listen),
@@ -41,13 +64,13 @@ export function renderWorksheet(activity, t, url) {
     questions);
 }
 
-export function renderAnswers(activity, t) {
-  return element('article', { class: 'paper', lang: activity.language },
+export function renderAnswers(activity, t, layout) {
+  return printable(activity, layout,
     paperHeading(activity.title, t.answers),
     element('section', { class: 'transcription' },
       element('h3', {}, t.transcription), element('p', {}, activity.transcript)),
-    element('ol', { class: 'questions answer-list' }, ...activity.questions.map(question =>
-      element('li', {}, element('p', {}, question.resposta),
+    element('ol', { class: 'questions answer-list' }, ...selectedQuestions(activity, layout).map(question =>
+      element('li', { value: question.numero }, element('p', {}, question.resposta),
         element('p', { class: 'answer-evidence' }, element('strong', {}, t.evidence + ' · '), question.pista)
       )))
   );
