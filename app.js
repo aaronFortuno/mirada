@@ -1,6 +1,6 @@
-import { loadCatalogue, renderCatalogue } from './catalogue.js';
+import { loadCatalogue, renderCatalogue } from './catalogue.js?v=0.2.0';
 import { makeListeningHash, renderListening } from './listening.js';
-import { messages, mottos } from './locales.js';
+import { messages, mottos } from './locales.js?v=0.2.0';
 import { chooseMotto, setupSiteControls } from './site.js';
 import { element, getPreference, setPreference } from './ui.js';
 import { renderAnswers, renderSources, renderWorksheet } from './worksheet.js';
