@@ -7,7 +7,34 @@ export const messages = {
     search: 'Cerca una comprensió', one: '1 comprensió', many: '{n} comprensions',
     noResults: 'Cap comprensió amb aquests filtres.', back: 'Torna al catàleg',
     worksheet: 'Fitxa', sources: 'Documents', answers: 'Solucionari', materials: 'Materials',
-    footer: 'Comprensions multimodals', sourceCode: 'Codi obert', pilot: 'Proposta pilot',
+    pilot: 'Proposta pilot',
+    catalogueOne: "1 comprensió multimodal per a la teva aula",
+    catalogueMany: "{n} comprensions multimodals per a la teva aula",
+    parent: "Un projecte d’",
+    projectLinks: "Informació del projecte",
+    license: "Llicència MIT",
+    changes: "Historial de canvis",
+    fullChangelog: "Historial complet a GitHub",
+    close: "Tanca",
+    releaseHeader: "Capçalera amb un missatge diferent a cada càrrega, recompte de comprensions i cercador.",
+    releasePreferences: "Menú de traducció en català i castellà. Tema clar per defecte i preferències desades al navegador.",
+    releaseFooter: "Peu amb la marca d’ortogra.fi, la llicència MIT, l’historial de canvis i el panell V4V.",
+    releasePilot: "Primera publicació a mirada.ortogra.fi amb el pilot «Arribem a la biblioteca».",
+    releaseMaterials: "Catàleg amb filtres i materials imprimibles. El QR de la fitxa obre la vista d’escolta de l’activitat.",
+    v4vIntro: "Mirada és una eina oberta per treballar la comprensió multimodal amb àudio i documents en paper.",
+    support: "El projecte és gratuït i segueix la filosofia Value for Value: si et resulta útil i vols donar-hi suport, pots fer un microdonatiu voluntari per Lightning. Recomanar-lo també ajuda.",
+    aboutAuthor: "Sobre l’autor",
+    authorNote: "Soc docent i creo aplicacions educatives i altres projectes de codi obert. Si tens curiositat, els trobaràs al meu portfoli.",
+    portfolio: "Portafoli",
+    openCode: "Codi obert",
+    contributeHint: "Pots fer-ne un fork o proposar millores amb un pull request al repositori.",
+    libraries: "Llibreries i recursos",
+    copyAddress: "Copia l’adreça",
+    addressCopied: "Adreça copiada.",
+    copyHelp: "Selecciona i copia l’adreça.",
+    privacyTitle: "Privadesa i estadístiques",
+    privacyInfo: "Preveiem comptar visites i usos de les funcions amb Umami allotjat en una instància pròpia, sense galetes de seguiment. S’hi enviaran només opcions conegudes i codis públics. Els noms, les respostes, les cerques escrites i els paràmetres de l’enllaç quedaran fora del registre.",
+    privacyReports: "Els avisos d’error faran servir el mateix servei i inclouran el codi de la comprensió, la part afectada i un motiu predefinit.",
     listen: 'Obre la vista d’escolta', copy: 'Copia l’enllaç d’escolta', copied: 'Enllaç copiat.',
     print: 'Imprimeix', name: 'Nom', date: 'Data', evidence: 'Pista',
     transcription: 'Transcripció de l’àudio', fullSize: 'Obre a mida completa', original: 'Font original',
@@ -27,7 +54,34 @@ export const messages = {
     search: 'Busca una actividad', one: '1 actividad', many: '{n} actividades',
     noResults: 'No hay actividades con estos filtros.', back: 'Volver al catálogo',
     worksheet: 'Ficha', sources: 'Documentos', answers: 'Solucionario', materials: 'Materiales',
-    footer: 'Comprensiones multimodales', sourceCode: 'Código abierto', pilot: 'Propuesta piloto',
+    pilot: 'Propuesta piloto',
+    catalogueOne: "1 comprensión multimodal para tu aula",
+    catalogueMany: "{n} comprensiones multimodales para tu aula",
+    parent: "Un proyecto de",
+    projectLinks: "Información del proyecto",
+    license: "Licencia MIT",
+    changes: "Historial de cambios",
+    fullChangelog: "Historial completo en GitHub",
+    close: "Cerrar",
+    releaseHeader: "Cabecera con un mensaje distinto en cada carga, recuento de comprensiones y buscador.",
+    releasePreferences: "Menú de traducción en catalán y castellano. Tema claro por defecto y preferencias guardadas en el navegador.",
+    releaseFooter: "Pie con la marca de ortogra.fi, la licencia MIT, el historial de cambios y el panel V4V.",
+    releasePilot: "Primera publicación en mirada.ortogra.fi con el piloto «Arribem a la biblioteca».",
+    releaseMaterials: "Catálogo con filtros y materiales imprimibles. El QR de la ficha abre la vista de escucha de la actividad.",
+    v4vIntro: "Mirada es una herramienta abierta para trabajar la comprensión multimodal con audio y documentos en papel.",
+    support: "El proyecto es gratuito y sigue la filosofía Value for Value: si te resulta útil y quieres apoyarlo, puedes hacer un microdonativo voluntario por Lightning. Recomendarlo también ayuda.",
+    aboutAuthor: "Sobre el autor",
+    authorNote: "Soy docente y creo aplicaciones educativas y otros proyectos de código abierto. Si tienes curiosidad, los encontrarás en mi portafolio.",
+    portfolio: "Portafolio",
+    openCode: "Código abierto",
+    contributeHint: "Puedes hacer un fork o proponer mejoras con un pull request al repositorio.",
+    libraries: "Bibliotecas y recursos",
+    copyAddress: "Copiar la dirección",
+    addressCopied: "Dirección copiada.",
+    copyHelp: "Selecciona y copia la dirección.",
+    privacyTitle: "Privacidad y estadísticas",
+    privacyInfo: "Prevemos contar visitas y usos de las funciones con Umami alojado en una instancia propia, sin cookies de seguimiento. Solo se enviarán opciones conocidas y códigos públicos. Los nombres, las respuestas, las búsquedas escritas y los parámetros del enlace quedarán fuera del registro.",
+    privacyReports: "Los avisos de error usarán el mismo servicio e incluirán el código de la comprensión, la parte afectada y un motivo predefinido.",
     listen: 'Abrir la vista de escucha', copy: 'Copiar el enlace de escucha', copied: 'Enlace copiado.',
     print: 'Imprimir', name: 'Nombre', date: 'Fecha', evidence: 'Pista',
     transcription: 'Transcripción del audio', fullSize: 'Abrir a tamaño completo', original: 'Fuente original',
@@ -40,3 +94,46 @@ export const messages = {
     levelLabels: { upperPrimary: 'Ciclo superior · 5.º y 6.º' }
   }
 };
+
+export const mottos = [
+  {
+    id: "details",
+    ca: "Mirar és fixar-se en allò que de primer passa desapercebut.",
+    es: "Mirar es fijarse en lo que al principio pasa inadvertido."
+  },
+  {
+    id: "questions",
+    ca: "La manera com mirem el món canvia les preguntes que ens fem.",
+    es: "La forma en que miramos el mundo cambia las preguntas que nos hacemos."
+  },
+  {
+    id: "map",
+    ca: "Mirar un plànol també és imaginar el camí que faràs.",
+    es: "Mirar un plano también es imaginar el camino que vas a recorrer."
+  },
+  {
+    id: "connections",
+    ca: "Mirar és descobrir què tenen a veure dues coses que semblaven separades.",
+    es: "Mirar es descubrir qué tienen que ver dos cosas que parecían separadas."
+  },
+  {
+    id: "second-look",
+    ca: "Una segona mirada pot canviar el que havies entès a la primera.",
+    es: "Una segunda mirada puede cambiar lo que habías entendido a la primera."
+  },
+  {
+    id: "perspective",
+    ca: "El mateix lloc es veu diferent segons des d’on el mires.",
+    es: "El mismo lugar se ve distinto según desde dónde lo mires."
+  },
+  {
+    id: "everyone",
+    ca: "Altres mirades ens fan veure coses que ens havien passat per alt.",
+    es: "Otras miradas nos hacen ver cosas que habíamos pasado por alto."
+  },
+  {
+    id: "nearby",
+    ca: "Mirar amb curiositat fa que fins i tot un lloc conegut et sorprengui.",
+    es: "Mirar con curiosidad hace que hasta un lugar conocido te sorprenda."
+  }
+];

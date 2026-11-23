@@ -16,17 +16,27 @@
     <div class="top-inner">
       <div class="identity">
         <a class="brand" href="./" aria-label="Mirada">mirada<span class="brand-dot">.</span></a>
-        <p class="header-motto" data-t="motto">Escolta, consulta i resol.</p>
+        <div class="header-intro">
+          <p id="header-motto" class="header-motto"></p>
+          <p id="header-count" class="header-count" hidden></p>
+        </div>
       </div>
       <div class="top-actions">
-        <label class="language">
-          <span class="sr-only" data-t="language">Idioma de la interfície</span>
-          <select id="language">
-            <option value="ca" lang="ca">Català</option>
-            <option value="es" lang="es">Español</option>
-          </select>
+        <label class="catalogue-search" id="catalogue-search" hidden>
+          <svg aria-hidden="true"><use href="./assets/icons.svg#search"></use></svg>
+          <span class="sr-only" data-t="search">Cerca una comprensió</span>
+          <input id="search" type="search" placeholder="Cerca una comprensió">
         </label>
-        <button class="icon-button" id="theme" type="button" aria-pressed="false" aria-label="Canvia el tema" title="Canvia el tema">◐</button>
+        <div class="language-control">
+          <button class="icon-button" id="language-button" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-menu" data-label="language" aria-label="Idioma de la interfície">
+            <svg aria-hidden="true"><use href="./assets/icons.svg#languages"></use></svg>
+          </button>
+          <div id="language-menu" class="language-menu" role="menu" aria-labelledby="language-button" hidden>
+            <button type="button" role="menuitemradio" data-language="ca" lang="ca" aria-checked="true" tabindex="-1">Català <svg aria-hidden="true"><use href="./assets/icons.svg#check"></use></svg></button>
+            <button type="button" role="menuitemradio" data-language="es" lang="es" aria-checked="false" tabindex="-1">Español <svg aria-hidden="true"><use href="./assets/icons.svg#check"></use></svg></button>
+          </div>
+        </div>
+        <button class="icon-button" id="theme" type="button" aria-pressed="false" data-label="theme" aria-label="Canvia el tema" title="Canvia el tema">◐</button>
       </div>
     </div>
   </header>
@@ -43,17 +53,10 @@
           <button class="subtle" type="reset" data-t="clear">Neteja els filtres</button>
         </form>
       </aside>
-      <section class="catalogue-results">
-        <div class="section-heading">
-          <h1 data-t="catalogue">Comprensions multimodals</h1>
-          <label class="catalogue-search">
-            <span class="sr-only" data-t="search">Cerca una comprensió</span>
-            <input id="search" type="search" placeholder="Cerca una comprensió">
-          </label>
-        </div>
-        <p id="result-count" class="meta" role="status"></p>
+      <div class="catalogue-results">
+        <p id="result-count" class="meta" role="status" hidden></p>
         <div id="activities" class="activity-grid"></div>
-      </section>
+      </div>
     </section>
     <section id="workspace" class="workspace" hidden>
       <aside class="pane workspace-tools">
@@ -75,10 +78,81 @@
 
   <footer class="bottom">
     <div class="bottom-inner">
-      <span data-t="footer">Comprensions multimodals</span>
-      <a href="https://ortogra.fi/" class="parent-brand" aria-label="ortogra.fi"><img src="./assets/ortografi.svg" width="23" height="23" alt="">ortogra.fi</a>
-      <a href="https://github.com/aaronFortuno/mirada" data-t="sourceCode">Codi obert</a>
+      <span data-t="motto">Escolta, consulta i resol.</span>
+      <a class="parent-brand" href="https://ortogra.fi/"><span data-t="parent">Un projecte d’</span><img src="./assets/ortografi.svg" width="90" height="19" alt="ortogra.fi"></a>
+      <nav class="footer-links" data-label="projectLinks" aria-label="Informació del projecte">
+        <a href="https://github.com/aaronFortuno/mirada/blob/main/LICENSE" data-label="license" aria-label="Llicència MIT">MIT</a>
+        <button type="button" data-open="changes" aria-haspopup="dialog" aria-controls="changes"><span class="sr-only" data-t="changes">Historial de canvis</span> v0.2.0</button>
+        <button type="button" data-open="v4v" aria-haspopup="dialog" aria-controls="v4v">V4V</button>
+      </nav>
     </div>
   </footer>
+  <dialog id="changes" aria-labelledby="changes-title">
+    <div class="changes-content">
+      <header class="dialog-head">
+        <div>
+          <h2 id="changes-title" data-t="changes">Historial de canvis</h2>
+          <a href="https://github.com/aaronFortuno/mirada/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" data-t="fullChangelog">Historial complet a GitHub</a>
+        </div>
+        <form method="dialog"><button class="icon-button" type="submit" data-label="close" aria-label="Tanca" autofocus><svg aria-hidden="true"><use href="./assets/icons.svg#close"></use></svg></button></form>
+      </header>
+      <div class="changelog-scroll">
+        <article>
+          <h3>v0.2.0 <time datetime="2026-11-23">23/11/2026</time></h3>
+          <ul>
+            <li data-t="releaseHeader">Capçalera amb un missatge diferent a cada càrrega, recompte de comprensions i cercador.</li>
+            <li data-t="releasePreferences">Menú de traducció en català i castellà. Tema clar per defecte i preferències desades al navegador.</li>
+            <li data-t="releaseFooter">Peu amb la marca d’ortogra.fi, la llicència MIT, l’historial de canvis i el panell V4V.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>v0.1.0 <time datetime="2026-11-23">23/11/2026</time></h3>
+          <ul>
+            <li data-t="releasePilot">Primera publicació a mirada.ortogra.fi amb el pilot «Arribem a la biblioteca».</li>
+            <li data-t="releaseMaterials">Catàleg amb filtres i materials imprimibles. El QR de la fitxa obre la vista d’escolta de l’activitat.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </dialog>
+  <dialog id="v4v" aria-labelledby="v4v-title">
+    <div class="v4v-content">
+      <div class="v4v-close"><form method="dialog"><button class="icon-button" type="submit" data-label="close" aria-label="Tanca" autofocus><svg aria-hidden="true"><use href="./assets/icons.svg#close"></use></svg></button></form></div>
+      <div class="v4v-grid">
+        <section class="v4v-value">
+          <h2 id="v4v-title">Value for Value</h2>
+          <div class="v4v-intro">
+            <a class="lightning-qr" href="lightning:LNURL1DP68GURN8GHJ7AMPD3KX2AR0VEEKZAR0WD5XJTNRDAKJ7TNHV4KXCTTTDEHHWM30D3H82UNVWQHKZUR5WDMKJMFEXQESLJTDDS" aria-label="Lightning"><img src="./assets/lightning.svg" alt="QR Lightning" width="144" height="144" loading="lazy"></a>
+            <div>
+              <p data-t="v4vIntro">Mirada és una eina oberta per treballar la comprensió multimodal amb àudio i documents en paper.</p>
+              <p data-t="support"></p>
+              <small>Lightning Network</small>
+              <div class="lightning-address"><code id="lightning-address">aptswim903@walletofsatoshi.com</code><button id="copy-lightning" class="icon-button" type="button" data-label="copyAddress" aria-label="Copia l’adreça"><svg aria-hidden="true"><use href="./assets/icons.svg#copy"></use></svg></button></div>
+              <p id="lightning-status" role="status"></p>
+            </div>
+          </div>
+        </section>
+        <section class="v4v-author">
+          <h3><span data-t="aboutAuthor">Sobre l’autor</span> · Aarón Fortuño</h3>
+          <img src="./assets/aaron-fortuno.png" alt="Aarón Fortuño" width="400" height="400" loading="lazy">
+          <p data-t="authorNote"></p>
+          <a href="https://aaronfortuno.github.io/portfolio/" target="_blank" rel="noopener noreferrer" data-t="portfolio">Portafoli</a>
+        </section>
+        <section class="analytics-privacy">
+          <h3 data-t="privacyTitle">Privadesa i estadístiques</h3>
+          <p data-t="privacyInfo"></p>
+          <p data-t="privacyReports"></p>
+        </section>
+        <section class="v4v-resources">
+          <h3 data-t="openCode">Codi obert</h3>
+          <p data-t="contributeHint"></p>
+          <p><a href="https://github.com/aaronFortuno/mirada" target="_blank" rel="noopener noreferrer">GitHub · Mirada</a> · <a href="https://github.com/aaronFortuno/mirada/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT</a></p>
+          <h3 data-t="libraries">Llibreries i recursos</h3>
+          <p><a href="https://lucide.dev/">Lucide</a> · ISC / MIT</p>
+          <p><a href="https://github.com/kazuhikoarase/qrcode-generator">QR Code Generator</a> · MIT</p>
+        </section>
+      </div>
+    </div>
+  </dialog>
 </body>
 </html>

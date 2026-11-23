@@ -1,6 +1,7 @@
 import { loadCatalogue, renderCatalogue } from './catalogue.js';
 import { makeListeningHash, renderListening } from './listening.js';
-import { messages } from './locales.js';
+import { messages, mottos } from './locales.js';
+import { chooseMotto, setupSiteControls } from './site.js';
 import { element, getPreference, setPreference } from './ui.js';
 import { renderAnswers, renderSources, renderWorksheet } from './worksheet.js';
 
@@ -8,8 +9,9 @@ const get = id => document.getElementById(id);
 const main = get('main');
 const filters = get('filters');
 const search = get('search');
-const language = get('language');
-const theme = get('theme');
+const searchLabel = get('catalogue-search');
+const headerCount = get('header-count');
+const motto = chooseMotto(mottos);
 const views = ['catalogue', 'workspace', 'listening'];
 const viewButtons = [...document.querySelectorAll('[data-view]')];
 
@@ -17,17 +19,24 @@ let activities = [];
 let sheet = 'worksheet';
 let loaded = false;
 let failed = false;
+let language = getPreference('language', 'ca') === 'es' ? 'es' : 'ca';
 let t;
 
 function translate() {
-  t = messages[language.value];
-  document.documentElement.lang = language.value;
+  t = messages[language];
+  document.documentElement.lang = language;
   document.title = 'Mirada · ' + t.catalogue;
   for (const node of document.querySelectorAll('[data-t]')) node.textContent = t[node.dataset.t];
   for (const node of document.querySelectorAll('[data-label]')) node.setAttribute('aria-label', t[node.dataset.label]);
-  theme.title = t.theme;
-  theme.setAttribute('aria-label', t.theme);
+  get('theme').title = t.theme;
+  get('header-motto').textContent = motto[language];
   search.placeholder = t.search;
+  updateHeaderCount();
+}
+
+function updateHeaderCount() {
+  headerCount.hidden = !loaded;
+  headerCount.textContent = activities.length === 1 ? t.catalogueOne : t.catalogueMany.replace('{n}', activities.length);
 }
 
 function populateFilters() {
@@ -106,28 +115,20 @@ function route() {
   get('loading').textContent = view ? t.loading : t.notFound;
   document.body.classList.toggle('listening-mode', view === 'listening');
   if (view !== 'listening') get('listening').replaceChildren();
+  searchLabel.hidden = view !== 'catalogue';
   if (view === 'catalogue') updateCatalogue();
   if (view === 'workspace') updateWorkspace(activity);
   if (view === 'listening') renderListening(activity, t, get('listening'));
 }
 
-function setTheme(value) {
-  document.documentElement.dataset.theme = value;
-  theme.setAttribute('aria-pressed', String(value === 'dark'));
-  setPreference('theme', value);
-}
-
-language.value = getPreference('language', 'ca') === 'es' ? 'es' : 'ca';
-setTheme(getPreference('theme', matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
 translate();
-
-theme.addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
-language.addEventListener('change', () => {
-  setPreference('language', language.value);
+setupSiteControls(language, nextLanguage => {
+  language = nextLanguage;
+  setPreference('language', language);
   translate();
   populateFilters();
   route();
-});
+}, () => t);
 filters.addEventListener('change', updateCatalogue);
 filters.addEventListener('reset', () => queueMicrotask(updateCatalogue));
 search.addEventListener('input', updateCatalogue);
@@ -144,6 +145,7 @@ window.addEventListener('hashchange', () => {
 try {
   activities = await loadCatalogue();
   loaded = true;
+  updateHeaderCount();
   populateFilters();
 } catch (error) {
   failed = true;

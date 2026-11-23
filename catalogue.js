@@ -17,6 +17,7 @@ export function renderCatalogue(activities, filters, query, t, container, count)
       && normalize(activity.title + ' ' + activity.summary + ' ' + activity.id).includes(search);
   });
 
+  count.hidden = !search && !Object.values(filters).some(Boolean);
   count.textContent = matching.length === 1 ? t.one : t.many.replace('{n}', matching.length);
   container.replaceChildren(...matching.map(activity => element('a', {
     class: 'activity-card', href: '#activitat=' + encodeURIComponent(activity.id), lang: activity.language
