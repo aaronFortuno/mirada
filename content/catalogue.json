@@ -1,0 +1,90 @@
+[
+  {
+    "id": "arribem-a-la-biblioteca",
+    "version": 1,
+    "language": "ca",
+    "level": "upperPrimary",
+    "title": "Arribem a la biblioteca",
+    "summary": "Un missatge de veu, un plànol i un horari per acabar un trajecte en bus per Igualada.",
+    "context": "És dimarts 14 de juliol de 2026, un dia feiner. La Júlia i en Nil han anat a passar el matí a Igualada. T’envien un missatge de veu perquè els ajudis a acabar el trajecte. Tens a mà un plànol del centre i l’horari d’una de les línies de bus. Escolta el missatge i consulta els dos documents per poder-los donar indicacions que puguin seguir.",
+    "transcript": "Ei, soc la Júlia! En Nil i jo ja som a l’Estació d’Autobusos. Ara són les deu i vint. L’altre cop vam agafar la circular interior i vam baixar a Rambla General Vives. Podem fer el mateix avui? Hem quedat amb la meva cosina a la parada de Cal Font. Ens espera allà i després anirem junts a la biblioteca. Mira a quina hora passa el primer bus d’aquesta línia que podem agafar i digue’ns per on anar quan baixem.",
+    "audio": null,
+    "sources": [
+      {
+        "type": "map",
+        "path": "./assets/igualada-planol.png",
+        "original": "https://tg.direxis.es/wp-content/uploads/2026/02/Planol-Bus-Igualada-20260210.pdf",
+        "description": "Plànol del bus urbà d’Igualada amb les parades i les línies del centre."
+      },
+      {
+        "type": "timetable",
+        "path": "./assets/igualada-horari-lc1.png",
+        "original": "https://tg.direxis.es/wp-content/uploads/2026/02/Tira_LC1_202603.pdf",
+        "description": "Horari de pas de la línia circular interior LC1 i nota sobre les parades alternatives de juliol."
+      }
+    ],
+    "questions": [
+      {
+        "numero": 1,
+        "tipus": "resposta breu",
+        "enunciat": "On són la Júlia i en Nil quan envien el missatge? Amb qui han quedat?",
+        "resposta": "Són a l’Estació d’Autobusos. Han quedat amb la cosina de la Júlia.",
+        "pista": "Àudio · «En Nil i jo ja som a l’Estació d’Autobusos» i «Hem quedat amb la meva cosina»."
+      },
+      {
+        "numero": 2,
+        "tipus": "test",
+        "enunciat": "Quina línia han de consultar i cada quant passa aquell dia?",
+        "opcions": [
+          "A. La LC1 passa cada 30 minuts.",
+          "B. La LC2 passa cada 20 minuts.",
+          "C. La LC1 passa cada 20 minuts."
+        ],
+        "resposta": "C. La circular interior és la LC1. Un dimarts feiner de juliol passa cada 20 minuts.",
+        "pista": "Àudio · «la circular interior». Fitxa · dimarts feiner de juliol. Horari · títol i columna de feiners de dilluns a divendres, excepte l’agost."
+      },
+      {
+        "numero": 3,
+        "tipus": "resposta breu",
+        "enunciat": "Segons l’horari, a quina hora passa el primer bus d’aquesta línia que poden agafar? Quants minuts s’han d’esperar?",
+        "resposta": "Cap a les 10.32 h. S’han d’esperar uns 12 minuts.",
+        "pista": "Àudio · «les deu i vint». Horari · Estació d’Autobusos, feiners de dilluns a divendres: :12, :32 i :52."
+      },
+      {
+        "numero": 4,
+        "tipus": "sí/no amb justificació",
+        "enunciat": "Poden baixar a la mateixa parada que l’altre cop? Marca sí o no. Escriu el nom de la parada i explica què diu la nota de l’horari que t’ha ajudat.",
+        "resposta": "No. L’altre cop van baixar a Rambla General Vives. La nota [2] indica que aquesta parada queda fora de servei durant el juliol.",
+        "pista": "Àudio · «vam baixar a Rambla General Vives». Fitxa · data de juliol. Horari · nota [2]."
+      },
+      {
+        "numero": 5,
+        "tipus": "resposta breu",
+        "enunciat": "Quines dues parades alternatives poden fer servir amb el bus que has trobat? A quina hora arribarien a cadascuna?",
+        "resposta": "Plaça del Rei, cap a les 10.38 h. Plaça de la Creu, cap a les 10.39 h.",
+        "pista": "Horari · l’expedició passa per l’Estació d’Autobusos a les 10.32 h. La nota [2] dona els minuts :38 i :39 per a les parades alternatives d’aquesta expedició."
+      },
+      {
+        "numero": 6,
+        "tipus": "sí/no amb justificació",
+        "enunciat": "Poden baixar del mateix bus directament a la parada on han quedat? Marca sí o no i explica què veus al plànol.",
+        "resposta": "No. Al plànol, la parada de Cal Font és a la línia LTM. La LC1 no hi té parada.",
+        "pista": "Àudio · «a la parada de Cal Font». Plànol · símbol de parada a la línia LTM i codis a la llegenda."
+      },
+      {
+        "numero": 7,
+        "tipus": "missatge escrit i itinerari",
+        "enunciat": "Escriu-los un missatge breu amb la línia, l’hora i la parada on poden agafar el bus, i tria on han de baixar. Ressegueix amb el dit un camí pels carrers fins a la parada on han quedat i dona’ls una indicació que puguin seguir.",
+        "resposta": "Exemple: «Agafeu la LC1 a l’Estació d’Autobusos cap a les 10.32 h i baixeu a Plaça de la Creu cap a les 10.39 h. A peu, pugeu fins a les rambles, travesseu-les i continueu pel carrer per on passa la línia verda fins a la parada de Cal Font.» També és vàlid baixar a Plaça del Rei cap a les 10.38 h i proposar un camí coherent fins a Cal Font.",
+        "pista": "Àudio · el punt de trobada. Horari · hora de pujada i nota de juliol. Plànol · recorregut a peu des de la parada de baixada."
+      },
+      {
+        "numero": 8,
+        "tipus": "sí/no amb justificació",
+        "enunciat": "Imagina que el mateix dia arriben a les 10.35 h a la parada de sortida. Amb la mateixa línia, poden baixar en alguna de les dues parades alternatives abans de les onze? Marca sí o no i justifica-ho amb una hora de pujada i una de baixada.",
+        "resposta": "Sí. Poden pujar cap a les 10.52 h i baixar a Plaça del Rei cap a les 10.58 h o a Plaça de la Creu cap a les 10.59 h.",
+        "pista": "Horari · el pas de les 10.32 h ja ha quedat enrere. El següent és a les 10.52 h i la nota [2] indica els minuts :58 i :59."
+      }
+    ]
+  }
+]

@@ -1,0 +1,42 @@
+export const messages = {
+  ca: {
+    skip: 'Ves al contingut', motto: 'Escolta, consulta i resol.', language: 'Idioma de la interfície',
+    theme: 'Canvia el tema', loading: 'Carregant les comprensions…', filters: 'Filtres',
+    contentLanguage: 'Idioma del material', level: 'Nivell', sourceType: 'Tipus de document',
+    all: 'Tots', clear: 'Neteja els filtres', catalogue: 'Comprensions multimodals',
+    search: 'Cerca una comprensió', one: '1 comprensió', many: '{n} comprensions',
+    noResults: 'Cap comprensió amb aquests filtres.', back: 'Torna al catàleg',
+    worksheet: 'Fitxa', sources: 'Documents', answers: 'Solucionari', materials: 'Materials',
+    footer: 'Comprensions multimodals', sourceCode: 'Codi obert', pilot: 'Proposta pilot',
+    listen: 'Obre la vista d’escolta', copy: 'Copia l’enllaç d’escolta', copied: 'Enllaç copiat.',
+    print: 'Imprimeix', name: 'Nom', date: 'Data', evidence: 'Pista',
+    transcription: 'Transcripció de l’àudio', fullSize: 'Obre a mida completa', original: 'Font original',
+    pending: 'Àudio pendent', pendingDetail: 'La nota de veu està pendent de locució. Per fer el pilot, demana al docent que llegeixi el missatge.',
+    listeningInstructions: 'Tingues a mà el plànol, l’horari i la fitxa abans d’escoltar.',
+    audioError: 'No s’ha pogut carregar l’àudio.', notFound: 'Aquesta comprensió no està disponible.',
+    loadError: 'No s’han pogut carregar les comprensions.', audio: 'Escolta',
+    sourceLabels: { map: 'Plànol', timetable: 'Horari' },
+    languageLabels: { ca: 'Català', es: 'Castellà' },
+    levelLabels: { upperPrimary: 'Cicle superior · 5è i 6è' }
+  },
+  es: {
+    skip: 'Ir al contenido', motto: 'Escucha, consulta y resuelve.', language: 'Idioma de la interfaz',
+    theme: 'Cambia el tema', loading: 'Cargando las actividades…', filters: 'Filtros',
+    contentLanguage: 'Idioma del material', level: 'Nivel', sourceType: 'Tipo de documento',
+    all: 'Todos', clear: 'Borrar los filtros', catalogue: 'Comprensiones multimodales',
+    search: 'Busca una actividad', one: '1 actividad', many: '{n} actividades',
+    noResults: 'No hay actividades con estos filtros.', back: 'Volver al catálogo',
+    worksheet: 'Ficha', sources: 'Documentos', answers: 'Solucionario', materials: 'Materiales',
+    footer: 'Comprensiones multimodales', sourceCode: 'Código abierto', pilot: 'Propuesta piloto',
+    listen: 'Abrir la vista de escucha', copy: 'Copiar el enlace de escucha', copied: 'Enlace copiado.',
+    print: 'Imprimir', name: 'Nombre', date: 'Fecha', evidence: 'Pista',
+    transcription: 'Transcripción del audio', fullSize: 'Abrir a tamaño completo', original: 'Fuente original',
+    pending: 'Audio pendiente', pendingDetail: 'La nota de voz está pendiente de locución. Para probar la actividad, pide a tu docente que lea el mensaje.',
+    listeningInstructions: 'Ten a mano el plano, el horario y la ficha antes de escuchar.',
+    audioError: 'No se ha podido cargar el audio.', notFound: 'Esta actividad no está disponible.',
+    loadError: 'No se han podido cargar las actividades.', audio: 'Escucha',
+    sourceLabels: { map: 'Plano', timetable: 'Horario' },
+    languageLabels: { ca: 'Catalán', es: 'Castellano' },
+    levelLabels: { upperPrimary: 'Ciclo superior · 5.º y 6.º' }
+  }
+};

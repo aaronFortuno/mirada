@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Comprensions multimodals d’ortogra.fi amb àudio i materials imprimibles.">
+  <meta name="theme-color" content="#f7f5ee">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./assets/qrcode.js"></script>
+  <script type="module" src="./app.js"></script>
+  <title>Mirada · Comprensions multimodals</title>
+</head>
+<body>
+  <a class="skip" href="#main" data-t="skip">Ves al contingut</a>
+  <header class="top">
+    <div class="top-inner">
+      <div class="identity">
+        <a class="brand" href="./" aria-label="Mirada">mirada<span class="brand-dot">.</span></a>
+        <p class="header-motto" data-t="motto">Escolta, consulta i resol.</p>
+      </div>
+      <div class="top-actions">
+        <label class="language">
+          <span class="sr-only" data-t="language">Idioma de la interfície</span>
+          <select id="language">
+            <option value="ca" lang="ca">Català</option>
+            <option value="es" lang="es">Español</option>
+          </select>
+        </label>
+        <button class="icon-button" id="theme" type="button" aria-pressed="false" aria-label="Canvia el tema" title="Canvia el tema">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <p id="loading" class="load-state" role="status" data-t="loading">Carregant les comprensions…</p>
+    <section id="catalogue" class="catalogue" hidden>
+      <aside class="pane catalogue-filters">
+        <h2 data-t="filters">Filtres</h2>
+        <form id="filters">
+          <label><span data-t="contentLanguage">Idioma del material</span><select name="language"></select></label>
+          <label><span data-t="level">Nivell</span><select name="level"></select></label>
+          <label><span data-t="sourceType">Tipus de document</span><select name="source"></select></label>
+          <button class="subtle" type="reset" data-t="clear">Neteja els filtres</button>
+        </form>
+      </aside>
+      <section class="catalogue-results">
+        <div class="section-heading">
+          <h1 data-t="catalogue">Comprensions multimodals</h1>
+          <label class="catalogue-search">
+            <span class="sr-only" data-t="search">Cerca una comprensió</span>
+            <input id="search" type="search" placeholder="Cerca una comprensió">
+          </label>
+        </div>
+        <p id="result-count" class="meta" role="status"></p>
+        <div id="activities" class="activity-grid"></div>
+      </section>
+    </section>
+    <section id="workspace" class="workspace" hidden>
+      <aside class="pane workspace-tools">
+        <a href="./" class="subtle" data-t="back">Torna al catàleg</a>
+        <div id="activity-info"></div>
+        <div id="workspace-actions"></div>
+      </aside>
+      <section class="pane preview">
+        <div class="preview-bar" role="group" aria-label="Materials" data-label="materials">
+          <button type="button" data-view="worksheet" aria-pressed="true" data-t="worksheet">Fitxa</button>
+          <button type="button" data-view="sources" aria-pressed="false" data-t="sources">Documents</button>
+          <button type="button" data-view="answers" aria-pressed="false" data-t="answers">Solucionari</button>
+        </div>
+        <div id="preview" class="paper-stage"></div>
+      </section>
+    </section>
+    <section id="listening" class="listening" hidden></section>
+  </main>
+
+  <footer class="bottom">
+    <div class="bottom-inner">
+      <span data-t="footer">Comprensions multimodals</span>
+      <a href="https://ortogra.fi/" class="parent-brand" aria-label="ortogra.fi"><img src="./assets/ortografi.svg" width="23" height="23" alt="">ortogra.fi</a>
+      <a href="https://github.com/aaronFortuno/mirada" data-t="sourceCode">Codi obert</a>
+    </div>
+  </footer>
+</body>
+</html>
