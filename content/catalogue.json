@@ -8,7 +8,7 @@
     "summary": "Un missatge de veu, un plànol i un horari per acabar un trajecte en bus per Igualada.",
     "context": "És dimarts 14 de juliol de 2026, un dia feiner. La Júlia i en Nil han anat a passar el matí a Igualada. T’envien un missatge de veu perquè els ajudis a acabar el trajecte. Tens a mà un plànol del centre i l’horari d’una de les línies de bus. Escolta el missatge i consulta els dos documents per poder-los donar indicacions que puguin seguir.",
     "transcript": "Ei, soc la Júlia! En Nil i jo ja som a l’Estació d’Autobusos. Ara són les deu i vint. L’altre cop vam agafar la circular interior i vam baixar a Rambla General Vives. Podem fer el mateix avui? Hem quedat amb la meva cosina a la parada de Cal Font. Ens espera allà i després anirem junts a la biblioteca. Mira a quina hora passa el primer bus d’aquesta línia que podem agafar i digue’ns per on anar quan baixem.",
-    "audio": null,
+    "audio": "./assets/audio/arribem-a-la-biblioteca.mp3",
     "sources": [
       {
         "type": "map",

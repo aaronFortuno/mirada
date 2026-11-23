@@ -1,5 +1,9 @@
 # Historial de canvis
 
+## v0.2.1 · 23 de novembre de 2026
+
+- Àudio de prova d’«Arribem a la biblioteca» disponible des del QR de la fitxa.
+
 ## v0.2.0 · 23 de novembre de 2026
 
 - Capçalera amb un missatge diferent a cada càrrega, recompte de comprensions i cercador.

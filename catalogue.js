@@ -1,7 +1,7 @@
 import { element } from './ui.js';
 
 export async function loadCatalogue() {
-  const response = await fetch(new URL('./content/catalogue.json', import.meta.url));
+  const response = await fetch(new URL('./content/catalogue.json', import.meta.url), { cache: 'no-cache' });
   if (!response.ok) throw new Error('Catalogue request failed: ' + response.status);
   return response.json();
 }

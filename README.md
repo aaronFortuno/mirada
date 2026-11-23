@@ -12,7 +12,7 @@ Serveix l’arrel amb qualsevol servidor HTTP estàtic. Per exemple, amb Python,
 
 El catàleg i el pilot són a `content/catalogue.json`. La vista docent i l’encaminament són a `app.js`. Els mòduls `catalogue.js`, `worksheet.js`, `listening.js` i `locales.js` mantenen separats el catàleg, els imprimibles, l’escolta i la llengua de la interfície.
 
-Cada entrada té un identificador i una versió. Conserva la versió dels materials impresos quan s’hi afegeixi l’àudio corresponent, amb el camp `audio` i un camí al fitxer. L’enllaç d’escolta combina l’identificador i la versió. El primer pilot es mostra com a pendent de locució fins que s’hi publiqui la presa corresponent.
+Cada entrada té un identificador i una versió. Conserva la versió dels materials impresos quan s’hi afegeixi l’àudio corresponent, amb el camp `audio` i un camí al fitxer. L’enllaç d’escolta combina l’identificador i la versió.
 
 ## Publicació
 
