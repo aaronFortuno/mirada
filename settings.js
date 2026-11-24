@@ -34,7 +34,7 @@ export function audioSettings(activity, values = {}) {
 }
 
 export function paperSettings(activity, values = {}) {
-  const layout = { font: Object.hasOwn(fonts, values.font) ? values.font : 'sans', questions: {} };
+  const layout = { font: Object.hasOwn(fonts, values.font) ? values.font : 'serif', questions: {} };
   for (const [key, field] of Object.entries(paperFields)) {
     layout[key] = within(values[key], field.min, field.max, field.default, field.step);
   }

@@ -1,7 +1,7 @@
 import { buildSessionPlayer, makeListeningHash, previewAudio } from './listening.js?v=0.3.0';
-import { audioDefaults, audioSettings, lineLimit, paperFields, paperSettings, rates, savedAudio, savedPaper, saveSettings } from './settings.js';
+import { audioDefaults, audioSettings, lineLimit, paperFields, paperSettings, rates, savedAudio, savedPaper, saveSettings } from './settings.js?v=0.3.1';
 import { element } from './ui.js';
-import { renderAnswers, renderSources, renderWorksheet } from './worksheet.js?v=0.3.0';
+import { renderSources, renderWorksheet } from './worksheet.js?v=0.3.1';
 
 const get = id => document.getElementById(id);
 
@@ -125,7 +125,7 @@ function printPanel(activity, t, layout, onChange) {
     return numberField(key, t[key], layout[key], min, max, step);
   };
   const typography = optionsGroup(t.typography, true, element('div', { class: 'settings-grid' },
-    selectField('font', t.font, [['sans', 'Arial'], ['serif', 'Georgia'], ['verdana', 'Verdana']], layout.font),
+    selectField('font', t.font, [['serif', 'Georgia'], ['sans', 'Arial'], ['verdana', 'Verdana']], layout.font),
     ...['size', 'leading', 'questionGap', 'lineGap'].map(field)
   ));
   const margins = optionsGroup(t.margins, false, element('div', { class: 'settings-grid' },
@@ -215,7 +215,7 @@ export function renderWorkspace(activity, versions, t, materialText, initialShee
     audio = settings;
     saveSettings('audio', activity, audio);
     syncUrl();
-    if (sheet === 'worksheet') draw();
+    if (sheet !== 'sources') draw();
   });
   const print = printPanel(activity, t, layout, settings => {
     layout = settings;
@@ -229,12 +229,9 @@ export function renderWorkspace(activity, versions, t, materialText, initialShee
   }
   function draw(resetScroll = false) {
     const scroll = preview.scrollTop;
-    const render = {
-      worksheet: () => renderWorksheet(activity, materialText, url, layout),
-      sources: () => renderSources(activity, materialText),
-      answers: () => renderAnswers(activity, materialText, layout)
-    };
-    preview.replaceChildren(render[sheet]());
+    const paper = sheet === 'sources' ? renderSources(activity, materialText) :
+      renderWorksheet(activity, materialText, url, layout, sheet);
+    preview.replaceChildren(paper);
     preview.scrollTop = resetScroll ? 0 : scroll;
     pageStyle.textContent = sheet === 'sources' ? '' :
       '@page { margin: ' + [layout.marginTop, layout.marginRight, layout.marginBottom, layout.marginLeft].map(mm => mm + 'mm').join(' ') + '; }';

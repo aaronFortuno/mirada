@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Comprensions multimodals d’ortogra.fi amb àudio i materials imprimibles.">
   <meta name="theme-color" content="#f7f5ee">
-  <link rel="stylesheet" href="./styles.css?v=0.3.0">
+  <link rel="icon" href="./assets/mirada.svg" type="image/svg+xml" sizes="any">
+  <link rel="stylesheet" href="./styles.css?v=0.3.1">
   <style id="worksheet-page-style"></style>
   <script defer src="./assets/qrcode.js"></script>
-  <script type="module" src="./app.js?v=0.3.0"></script>
+  <script type="module" src="./app.js?v=0.3.1"></script>
   <title>Mirada · Comprensions multimodals</title>
 </head>
 <body>
@@ -16,11 +17,18 @@
   <header class="top">
     <div class="top-inner">
       <div class="identity">
-        <a class="brand" href="./" aria-label="Mirada">mirada<span class="brand-dot">.</span></a>
+        <a class="brand" href="./" aria-label="Mirada">
+          <img class="brand-mark" src="./assets/mirada.svg" width="36" height="36" alt="">
+          <span>mirada<span class="brand-dot">.</span></span>
+        </a>
         <div class="header-intro">
           <p id="header-motto" class="header-motto"></p>
           <p id="header-count" class="header-count" hidden></p>
         </div>
+      </div>
+      <div class="beta-note">
+        <span class="beta-label" tabindex="0" aria-describedby="beta-help">BETA</span>
+        <span class="beta-help" id="beta-help" role="tooltip" data-t="betaHelp">Mirada és un projecte en fase inicial de desenvolupament.</span>
       </div>
       <div class="top-actions">
         <label class="catalogue-search" id="catalogue-search" hidden>
@@ -28,16 +36,18 @@
           <span class="sr-only" data-t="search">Cerca una comprensió</span>
           <input id="search" type="search" placeholder="Cerca una comprensió">
         </label>
-        <div class="language-control">
-          <button class="icon-button" id="language-button" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-menu" data-label="language" aria-label="Idioma de la interfície">
-            <svg aria-hidden="true"><use href="./assets/icons.svg#languages"></use></svg>
-          </button>
-          <div id="language-menu" class="language-menu" role="menu" aria-labelledby="language-button" hidden>
-            <button type="button" role="menuitemradio" data-language="ca" lang="ca" aria-checked="true" tabindex="-1">Català <svg aria-hidden="true"><use href="./assets/icons.svg#check"></use></svg></button>
-            <button type="button" role="menuitemradio" data-language="es" lang="es" aria-checked="false" tabindex="-1">Español <svg aria-hidden="true"><use href="./assets/icons.svg#check"></use></svg></button>
+        <div class="site-controls">
+          <div class="language-control">
+            <button class="icon-button" id="language-button" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-menu" data-label="language" aria-label="Idioma de la interfície">
+              <svg aria-hidden="true"><use href="./assets/icons.svg#languages"></use></svg>
+            </button>
+            <div id="language-menu" class="language-menu" role="menu" aria-labelledby="language-button" hidden>
+              <button type="button" role="menuitemradio" data-language="ca" lang="ca" aria-checked="true" tabindex="-1">Català <svg aria-hidden="true"><use href="./assets/icons.svg#check"></use></svg></button>
+              <button type="button" role="menuitemradio" data-language="es" lang="es" aria-checked="false" tabindex="-1">Español <svg aria-hidden="true"><use href="./assets/icons.svg#check"></use></svg></button>
+            </div>
           </div>
+          <button class="icon-button" id="theme" type="button" aria-pressed="false" data-label="theme" aria-label="Canvia el tema" title="Canvia el tema">◐</button>
         </div>
-        <button class="icon-button" id="theme" type="button" aria-pressed="false" data-label="theme" aria-label="Canvia el tema" title="Canvia el tema">◐</button>
       </div>
     </div>
   </header>
@@ -94,7 +104,7 @@
       <a class="parent-brand" href="https://ortogra.fi/"><span data-t="parent">Un projecte d’</span><img src="./assets/ortografi.svg" width="90" height="19" alt="ortogra.fi"></a>
       <nav class="footer-links" data-label="projectLinks" aria-label="Informació del projecte">
         <a href="https://github.com/aaronFortuno/mirada/blob/main/LICENSE" data-label="license" aria-label="Llicència MIT">MIT</a>
-        <button type="button" data-open="changes" aria-haspopup="dialog" aria-controls="changes"><span class="sr-only" data-t="changes">Historial de canvis</span> v0.3.0</button>
+        <button type="button" data-open="changes" aria-haspopup="dialog" aria-controls="changes"><span class="sr-only" data-t="changes">Historial de canvis</span> v0.3.1</button>
         <button type="button" data-open="v4v" aria-haspopup="dialog" aria-controls="v4v">V4V</button>
       </nav>
     </div>
@@ -109,6 +119,13 @@
         <form method="dialog"><button class="icon-button" type="submit" data-label="close" aria-label="Tanca" autofocus><svg aria-hidden="true"><use href="./assets/icons.svg#close"></use></svg></button></form>
       </header>
       <div class="changelog-scroll">
+        <article>
+          <h3>v0.3.1 <time datetime="2026-11-24">24/11/2026</time></h3>
+          <ul>
+            <li data-t="releaseBrand">Logotip al web, al favicon i als imprimibles. Avís BETA a la capçalera.</li>
+            <li data-t="releaseAnswerFormat">Fitxa i solucionari amb el mateix format. Les solucions apareixen sota cada pregunta, amb lletra sense serifa i sagnat.</li>
+          </ul>
+        </article>
         <article>
           <h3>v0.3.0 <time datetime="2026-11-23">23/11/2026</time></h3>
           <ul>

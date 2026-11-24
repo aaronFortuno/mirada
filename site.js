@@ -9,6 +9,14 @@ export function chooseMotto(mottos) {
 }
 
 export function setupSiteControls(language, onLanguageChange, getMessages) {
+  const beta = document.querySelector('.beta-note');
+  const betaLabel = beta.querySelector('.beta-label');
+  betaLabel.addEventListener('keydown', event => {
+    if (event.key === 'Escape') beta.dataset.dismissed = '';
+  });
+  betaLabel.addEventListener('blur', () => delete beta.dataset.dismissed);
+  beta.addEventListener('pointerleave', () => delete beta.dataset.dismissed);
+
   const theme = document.getElementById('theme');
   const applyTheme = value => {
     document.documentElement.dataset.theme = value;

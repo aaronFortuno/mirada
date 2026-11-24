@@ -1,5 +1,12 @@
 # Historial de canvis
 
+## v0.3.1 · 24 de novembre de 2026
+
+- Logotip de Mirada a la capçalera, al favicon, a les previsualitzacions i a la fitxa i el solucionari impresos.
+- Indicador BETA a la capçalera amb un avís de desenvolupament inicial.
+- Fitxa i solucionari amb la mateixa capçalera, context, QR i preguntes. El solucionari mostra les respostes sota cada enunciat, amb tipografia sense serifa i sagnat, i la transcripció al final.
+- Tipografia amb serifa per defecte als materials.
+
 ## v0.3.0 · 23 de novembre de 2026
 
 - Panell d’àudio amb fragment original, prova de la sessió, lectura prèvia, nombre d’escoltes, pausa, velocitat i locucions opcionals. El QR conserva la configuració.

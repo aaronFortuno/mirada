@@ -1,9 +1,9 @@
 import { loadCatalogue, renderCatalogue } from './catalogue.js?v=0.3.0';
 import { audioFromLink, renderListening } from './listening.js?v=0.3.0';
-import { messages, mottos } from './locales.js?v=0.3.0';
-import { chooseMotto, setupSiteControls } from './site.js';
+import { messages, mottos } from './locales.js?v=0.3.1';
+import { chooseMotto, setupSiteControls } from './site.js?v=0.3.1';
 import { element, getPreference, setPreference } from './ui.js';
-import { renderWorkspace, setupWorkspacePanels } from './workspace.js';
+import { renderWorkspace, setupWorkspacePanels } from './workspace.js?v=0.3.1';
 
 const get = id => document.getElementById(id);
 const main = get('main');
